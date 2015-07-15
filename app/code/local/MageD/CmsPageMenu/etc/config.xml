@@ -1,0 +1,46 @@
+<?xml version="1.0"?>
+<config>
+  <modules>
+    <MageD_CmsPageMenu>
+      <version>0.1.0</version>
+    </MageD_CmsPageMenu>
+  </modules>
+  <global>
+      <models>
+          <maged_cmspagemenu>
+              <class>MageD_CmsPageMenu_Model</class>
+          </maged_cmspagemenu>
+          <catalog>
+              <rewrite>
+                  <observer>MageD_CmsPageMenu_Model_Rewrite_Catalog_Observer</observer>
+              </rewrite>
+          </catalog>
+      </models>
+      <events>
+          <catalog_category_flat_loadnodes_before>
+              <observers>
+                  <catalog_category_flat_loadnodes_before_handler>
+                      <type>singleton</type>
+                      <class>maged_cmspagemenu/observer</class>
+                      <method>addMenuAttributes</method>
+                  </catalog_category_flat_loadnodes_before_handler>
+              </observers>
+          </catalog_category_flat_loadnodes_before>
+      </events>
+      <resources>
+          <maged_cmspagemenu_setup>
+              <setup>
+                  <module>MageD_CmsPageMenu</module>
+                  <class>Mage_Eav_Model_Entity_Setup</class>
+              </setup>
+          </maged_cmspagemenu_setup>
+      </resources>
+    <helpers>
+      <maged_cmspagemenu>
+        <class>MageD_CmsPageMenu_Helper</class>
+      </maged_cmspagemenu>
+    </helpers>
+
+
+  </global>
+</config> 
